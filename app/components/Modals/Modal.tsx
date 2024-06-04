@@ -26,20 +26,24 @@ const ModalStyled = styled.div`
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.45);
-    filter: blur(5px);
+    filter: blur(4px);
   }
 
   .modal-content {
     padding: 2rem;
+    margin: 0 1rem;
     position: relative;
     max-width: 630px;
     width: 100%;
     z-index: 100;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
-    border-radius: ${(props) => props.theme.borderRadiusMd2};
     background-color: ${(props) => props.theme.colorBg2};
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    border-radius: ${(props) => props.theme.borderRadiusMd2};
+
+    @media screen and (max-width: 450px) {
+      font-size: 90%;
+    }
   }
 `;
 
@@ -48,9 +52,8 @@ const Modal = ({ content }: Props) => {
 
   return (
     <ModalStyled theme={theme}>
-      <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal-content">{content}</div>
-      </div>
+      <div className="modal-overlay" onClick={closeModal}></div>
+      <div className="modal-content">{content}</div>
     </ModalStyled>
   );
 };

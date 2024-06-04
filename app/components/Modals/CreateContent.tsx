@@ -17,7 +17,7 @@ const CreateContent = () => {
 
   const { theme, closeModal, getAllTasks } = useGlobalState();
 
-  const handleChange = (name: string) => (e: any) => {
+  const handleChange = (name: string, e: any) => {
     switch (name) {
       case "title":
         setTitle(e.target.value);
@@ -80,20 +80,20 @@ const CreateContent = () => {
 
     color: ${(props) => props.theme.colorGrey1};
 
-    label {
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      font-size: clamp(0.9rem, 5vw, 1.2rem);
-
-      span {
-        color: ${(props) => props.theme.colorGrey3};
-      }
-    }
-
     .input-control {
       position: relative;
       margin: 1.6rem 0;
       font-weight: 500;
+
+      label {
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        font-size: clamp(0.9rem, 5vw, 1.2rem);
+
+        span {
+          color: ${(props) => props.theme.colorGrey3};
+        }
+      }
 
       input,
       textarea {
@@ -141,7 +141,7 @@ const CreateContent = () => {
           name="title"
           id="title"
           value={title}
-          onChange={handleChange("title")}
+          onChange={(e) => handleChange("title", e)}
           placeholder="e.g. Watch a video from Fireship."
         />
       </div>
@@ -153,7 +153,7 @@ const CreateContent = () => {
           id="description"
           value={description}
           rows={4}
-          onChange={handleChange("description")}
+          onChange={(e) => handleChange("description", e)}
           placeholder="e.g. Watch a video about Next.js Auth."
         ></textarea>
       </div>
@@ -165,7 +165,7 @@ const CreateContent = () => {
           name="date"
           id="date"
           value={date}
-          onChange={handleChange("date")}
+          onChange={(e) => handleChange("date", e)}
         />
       </div>
 
@@ -176,7 +176,7 @@ const CreateContent = () => {
           name="isCompleted"
           id="isCompleted"
           value={isCompleted?.toString()}
-          onChange={handleChange("isCompleted")}
+          onChange={(e) => handleChange("isCompleted", e)}
         />
       </div>
 
@@ -187,7 +187,7 @@ const CreateContent = () => {
           name="isImportant"
           id="isImportant"
           value={isImportant?.toString()}
-          onChange={handleChange("isImportant")}
+          onChange={(e) => handleChange("isImportant", e)}
         />
       </div>
 
