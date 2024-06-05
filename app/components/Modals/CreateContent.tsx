@@ -17,7 +17,7 @@ const CreateContent = () => {
 
   const { theme, closeModal, getAllTasks } = useGlobalState();
 
-  const handleChange = (name: string, e: any) => {
+  const handleChange = (name: string) => (e: any) => {
     switch (name) {
       case "title":
         setTitle(e.target.value);
@@ -141,7 +141,7 @@ const CreateContent = () => {
           name="title"
           id="title"
           value={title}
-          onChange={(e) => handleChange("title", e)}
+          onChange={handleChange("title")}
           placeholder="e.g. Watch a video from Fireship."
         />
       </div>
@@ -153,7 +153,7 @@ const CreateContent = () => {
           id="description"
           value={description}
           rows={4}
-          onChange={(e) => handleChange("description", e)}
+          onChange={handleChange("description")}
           placeholder="e.g. Watch a video about Next.js Auth."
         ></textarea>
       </div>
@@ -165,7 +165,7 @@ const CreateContent = () => {
           name="date"
           id="date"
           value={date}
-          onChange={(e) => handleChange("date", e)}
+          onChange={handleChange("date")}
         />
       </div>
 
@@ -176,7 +176,7 @@ const CreateContent = () => {
           name="isCompleted"
           id="isCompleted"
           value={isCompleted?.toString()}
-          onChange={(e) => handleChange("isCompleted", e)}
+          onChange={handleChange("isCompleted")}
         />
       </div>
 
@@ -187,7 +187,7 @@ const CreateContent = () => {
           name="isImportant"
           id="isImportant"
           value={isImportant?.toString()}
-          onChange={(e) => handleChange("isImportant", e)}
+          onChange={handleChange("isImportant")}
         />
       </div>
 

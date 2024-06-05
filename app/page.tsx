@@ -6,7 +6,6 @@ import { useGlobalState } from "./context/globalProvider";
 const page = () => {
   const { tasks } = useGlobalState();
 
-
   return (
     <>
       <Tasks tasks={tasks} title={"All Tasks"} />

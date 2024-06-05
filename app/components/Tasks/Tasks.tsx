@@ -7,6 +7,8 @@ import TaskItem from "./../TaskItem/TaskItem";
 import { FaFileCirclePlus } from "react-icons/fa6";
 import Modal from "../Modals/Modal";
 import CreateContent from "../Modals/CreateContent";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const TaskStyled = styled.main`
   width: 100%;
@@ -69,6 +71,15 @@ interface Props {
 
 const Tasks = ({ tasks, title }: Props) => {
   const { theme, isLoading, openModal, modal } = useGlobalState();
+
+  const { user } = useUser();
+
+  const router = useRouter();
+
+  if (!user) {
+    router.push("/signin");
+    return;
+  }
 
   return (
     <TaskStyled theme={theme}>
